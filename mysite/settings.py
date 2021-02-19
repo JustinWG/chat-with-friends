@@ -130,11 +130,13 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Channels
 ASGI_APPLICATION = 'mysite.asgi.application'
+host_list = []
+host_list.append(config('REDIS_URL', default=[], cast=Csv(post_process=tuple)))
 CHANNEL_LAYERS = {
     'default': {
         'BACKEND': 'channels_redis.core.RedisChannelLayer',
         'CONFIG': {
-            "hosts": [('127.0.0.1', 6379)],
+            "hosts": host_list
         },
     },
 }

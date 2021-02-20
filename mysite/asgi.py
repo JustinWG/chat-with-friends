@@ -24,3 +24,5 @@ application = ProtocolTypeRouter({
         )
     ),
 })
+
+os.environ['DJANGO_SETTINGS_MODULE'] = 'mysite.settings'
